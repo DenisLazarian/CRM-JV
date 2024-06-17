@@ -23,6 +23,8 @@ public class UserService implements IUserService {
 
     @Autowired
     ModelMapper modelMapper;
+
+
     @Override
     public List<UserDTO> findAll() {
         return this.userRepository.findUsers()
