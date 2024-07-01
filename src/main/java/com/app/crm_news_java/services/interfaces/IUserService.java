@@ -9,9 +9,12 @@ public interface IUserService {
 
     UserDTO create(UserDTO userDTO);
 
+    UserDTO getAuthUser(Long id);
+
     UserDTO findById(Long id);
 
     UserDTO update(UserDTO userDTO, Long id);
 
     String delete(Long id);
+
 }

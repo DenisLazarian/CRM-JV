@@ -28,7 +28,7 @@ public class UserController {
         return ResponseEntity.ok(this.userService.findAll());
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userDTO, @PathVariable Long id){
         userDTO.setLastModifiedDate(new Date());
         return ResponseEntity.ok().body(this.userService.update(userDTO, id));
@@ -36,6 +36,11 @@ public class UserController {
 
     @GetMapping("/find/{id}")
     public ResponseEntity<UserDTO> getById(@PathVariable Long id){
+        UserDTO n = this.userService.findById(id);
+
+        if(n.getId() == null){
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok().body(this.userService.findById(id));
     }
 

@@ -5,9 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import lombok.*;
 
 import java.util.Date;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+//@ToString(exclude = {})
 public class NewDTO {
     private Long id;
 
@@ -21,5 +27,7 @@ public class NewDTO {
 
     private Date lastModified;
 
-    private UserEntity author;
+    private UserDTO author;
+
+
 }

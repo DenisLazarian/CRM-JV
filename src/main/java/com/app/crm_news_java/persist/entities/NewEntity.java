@@ -10,9 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "users")
-@Getter
-@Setter
+@Table(name = "news")
 public class NewEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +26,7 @@ public class NewEntity {
 
     private Date lastModified;
 
-    @ManyToOne(targetEntity = UserEntity.class)
+    @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
     private UserEntity author;
 
 }

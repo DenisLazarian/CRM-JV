@@ -7,7 +7,6 @@ import lombok.*;
 import java.util.Date;
 import java.util.List;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -15,6 +14,7 @@ import java.util.List;
 @Table(name = "users")
 @Getter
 @Setter
+@ToString(exclude = {"articles"})
 public class UserEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +45,10 @@ public class UserEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModifiedDate;
 
-    @OneToMany(targetEntity = NewEntity.class, fetch = FetchType.LAZY, mappedBy = "author")
+    @OneToMany(
+            targetEntity = NewEntity.class,
+            fetch = FetchType.LAZY,
+            mappedBy = "author"
+    )
     private List<NewEntity> articles;
 }

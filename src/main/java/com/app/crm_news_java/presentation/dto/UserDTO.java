@@ -3,20 +3,18 @@ package com.app.crm_news_java.presentation.dto;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter @Setter
+@ToString
 public class UserDTO {
-
     private Long id;
 
     private String name;
@@ -30,5 +28,5 @@ public class UserDTO {
     private Date born;
     private Date lastModifiedDate;
 
-    private List<NewDTO> articles;
+//    private List<NewDTO> articles;
 }

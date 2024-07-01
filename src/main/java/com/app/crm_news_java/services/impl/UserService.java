@@ -4,8 +4,6 @@ import com.app.crm_news_java.persist.entities.UserEntity;
 import com.app.crm_news_java.persist.repositories.IUserRepository;
 import com.app.crm_news_java.presentation.dto.UserDTO;
 import com.app.crm_news_java.services.interfaces.IUserService;
-import org.apache.catalina.User;
-import org.apache.tomcat.jni.Library;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,10 +36,15 @@ public class UserService implements IUserService {
         try{
             UserEntity user = modelMapper.map(userDTO, UserEntity.class);
             this.userRepository.save(user);
-            return userDTO;
+            return modelMapper.map(user, UserDTO.class);
         }catch (Exception e){
             throw new UnsupportedOperationException("Error al crear el usuario.");
         }
+    }
+
+    @Override
+    public UserDTO getAuthUser(Long id){
+        return this.modelMapper.map(this.userRepository.findById(id), UserDTO.class);
     }
 
     @Override

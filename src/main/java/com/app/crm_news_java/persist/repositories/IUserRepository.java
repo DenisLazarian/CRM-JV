@@ -13,10 +13,10 @@ public interface IUserRepository extends CrudRepository<UserEntity, Long> {
 
     Optional<UserEntity> findByEmail(String name);
 
-    @Query("select u from UserEntity u")
+    @Query("SELECT u FROM UserEntity u")
     List<UserEntity> findUsers();
 
-    @Query("select u from UserEntity u where u.id = ?1")
+    @Query("SELECT u FROM UserEntity u WHERE u.id = ?1")
     Optional<UserEntity> getById(Long id);
 
 }
